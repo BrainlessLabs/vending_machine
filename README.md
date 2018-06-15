@@ -18,8 +18,9 @@ Design a vending machine with the following characteristics.
   * 10
 * The difference is only given out in the obove denomination, so the price of the product is adjusted to the same as following
   * If the price is less than **X.3** then it is converted to X else converted to **X + 1**
+* If there is not enough change, return the coins and display message **"CANNOT RENDER CHANGE"**
 
-# Libraries Used
+# External Libraries Used
 * [SQLite](https://www.sqlite.org/index.html) : This is the library for database
 * [rang](https://agauniyal.github.io/rang/) : Library for colorful console applications that is cross platform
 * [CppConsoleTable](https://github.com/Oradle/CppConsoleTable) : Creating tables in the console
