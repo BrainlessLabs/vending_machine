@@ -90,5 +90,8 @@
     <ClInclude Include="..\include\rang.hpp">
       <Filter>Header Files\rang</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\vending_machine.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

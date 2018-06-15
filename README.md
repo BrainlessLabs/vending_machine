@@ -20,7 +20,7 @@ Design a vending machine with the following characteristics.
   * If the price is less than **X.3** then it is converted to X else converted to **X + 1**
 
 # Libraries Used
-* [SQLite](https://www.sqlite.org/index.html)
-* [rang](https://agauniyal.github.io/rang/)
-* [CppConsoleTable](https://github.com/Oradle/CppConsoleTable)
-* [sqlite_modern_cpp](https://github.com/SqliteModernCpp/sqlite_modern_cpp)
+* [SQLite](https://www.sqlite.org/index.html) : This is the library for database
+* [rang](https://agauniyal.github.io/rang/) : Library for colorful console applications that is cross platform
+* [CppConsoleTable](https://github.com/Oradle/CppConsoleTable) : Creating tables in the console
+* [sqlite_modern_cpp](https://github.com/SqliteModernCpp/sqlite_modern_cpp) : A modern C++14 wrapper around SQLite
