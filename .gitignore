@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+*.pdb
+
+# Bin Folder
+*/bin/*
+*/x64/*
+*/.vs/*
