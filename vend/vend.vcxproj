@@ -142,6 +142,7 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <WholeProgramOptimization>false</WholeProgramOptimization>
+      <AdditionalIncludeDirectories>$(SolutionDir)..\include;$(SolutionDir)..\src;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -155,7 +156,23 @@
     <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\src\sqlite3.c" />
     <ClCompile Include="..\src\vend.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\include\CppConsoleTable.hpp" />
+    <ClInclude Include="..\include\rang.hpp" />
+    <ClInclude Include="..\include\sqlite3.h" />
+    <ClInclude Include="..\include\sqlite3ext.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\errors.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\lists\error_codes.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\log.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\sqlcipher.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\utility\function_traits.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\utility\uncaught_exceptions.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\utility\utf16_utf8.h" />
+    <ClInclude Include="..\include\sqlite_modern_cpp\utility\variant.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
