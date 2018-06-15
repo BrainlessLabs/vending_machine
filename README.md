@@ -19,4 +19,8 @@ Design a vending machine with the following characteristics.
 * The difference is only given out in the obove denomination, so the price of the product is adjusted to the same as following
   * If the price is less than **X.3** then it is converted to X else converted to **X + 1**
 
-
+# Libraries Used
+* [SQLite](https://www.sqlite.org/index.html)
+* [rang](https://agauniyal.github.io/rang/)
+* [CppConsoleTable](https://github.com/Oradle/CppConsoleTable)
+* [sqlite_modern_cpp](https://github.com/SqliteModernCpp/sqlite_modern_cpp)
