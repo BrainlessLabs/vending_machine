@@ -161,9 +161,12 @@
     <ClCompile Include="..\src\vend.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\coin.hpp" />
+    <ClInclude Include="..\include\coin_manager.hpp" />
     <ClInclude Include="..\include\CppConsoleTable.hpp" />
     <ClInclude Include="..\include\json.hpp" />
     <ClInclude Include="..\include\rang.hpp" />
+    <ClInclude Include="..\include\reverse_iterator.hpp" />
     <ClInclude Include="..\include\sqlite3.h" />
     <ClInclude Include="..\include\sqlite3ext.h" />
     <ClInclude Include="..\include\sqlite_modern_cpp.h" />

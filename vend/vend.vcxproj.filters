@@ -111,5 +111,14 @@
     <ClInclude Include="..\include\json.hpp">
       <Filter>Header Files\third_party\json</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\reverse_iterator.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\coin.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\coin_manager.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
