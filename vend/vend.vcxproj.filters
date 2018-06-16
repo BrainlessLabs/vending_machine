@@ -16,26 +16,41 @@
     <Filter Include="src">
       <UniqueIdentifier>{44cb9f96-a1bc-4c83-b84a-005b79de985d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\hdr">
-      <UniqueIdentifier>{f0a02afc-4f2d-42f1-be10-22825116eb36}</UniqueIdentifier>
+    <Filter Include="Header Files\third_party">
+      <UniqueIdentifier>{98d47e95-f515-412f-bf4a-167d69b2b69f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\hdr\sqlite_modern_cpp">
-      <UniqueIdentifier>{9e70596b-5e0f-49fe-b0e9-d69e064af20f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\hdr\sqlite_modern_cpp\lists">
-      <UniqueIdentifier>{ce0e5d28-4366-44cd-a6d3-0bea704a22ec}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\hdr\sqlite_modern_cpp\utility">
-      <UniqueIdentifier>{e46b565d-9529-46f0-8d13-9f262804bc84}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\sqlite">
-      <UniqueIdentifier>{b9f954e5-f9cc-43ed-abb8-9eee22128437}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\consoletable">
+    <Filter Include="Header Files\third_party\consoletable">
       <UniqueIdentifier>{f2d95365-c1bc-4d0d-94bb-fb7e4ad72646}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\rang">
+    <Filter Include="Header Files\third_party\hdr">
+      <UniqueIdentifier>{f0a02afc-4f2d-42f1-be10-22825116eb36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\hdr\sqlite_modern_cpp">
+      <UniqueIdentifier>{9e70596b-5e0f-49fe-b0e9-d69e064af20f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\hdr\sqlite_modern_cpp\lists">
+      <UniqueIdentifier>{ce0e5d28-4366-44cd-a6d3-0bea704a22ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\hdr\sqlite_modern_cpp\utility">
+      <UniqueIdentifier>{e46b565d-9529-46f0-8d13-9f262804bc84}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\json">
+      <UniqueIdentifier>{139afffb-12c8-44e7-a3ec-cb8393c34ece}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\rang">
       <UniqueIdentifier>{b2e51277-5ef4-486d-9f3d-68ef9c05da8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\third_party\sqlite">
+      <UniqueIdentifier>{b9f954e5-f9cc-43ed-abb8-9eee22128437}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\include">
+      <UniqueIdentifier>{02e3cde3-c507-46b7-b831-003ffe009ab8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\third_party">
+      <UniqueIdentifier>{922c844d-df81-4416-bcae-d2b55dbff54c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="src\source">
+      <UniqueIdentifier>{79fc85cc-4b1e-42c2-a555-6fc87ab6762f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -43,55 +58,58 @@
     <None Include="..\README.md" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\src\vend.cpp">
-      <Filter>src</Filter>
-    </ClCompile>
     <ClCompile Include="..\src\sqlite3.c">
-      <Filter>src</Filter>
+      <Filter>src\third_party</Filter>
+    </ClCompile>
+    <ClCompile Include="..\src\vend.cpp">
+      <Filter>src\source</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\sqlite_modern_cpp.h">
-      <Filter>Header Files\hdr</Filter>
+      <Filter>Header Files\third_party\hdr</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\errors.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\log.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\sqlcipher.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\lists\error_codes.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp\lists</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp\lists</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\utility\function_traits.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp\utility</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\utility\uncaught_exceptions.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp\utility</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\utility\utf16_utf8.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp\utility</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite_modern_cpp\utility\variant.h">
-      <Filter>Header Files\hdr\sqlite_modern_cpp\utility</Filter>
+      <Filter>Header Files\third_party\hdr\sqlite_modern_cpp\utility</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite3.h">
-      <Filter>Header Files\sqlite</Filter>
+      <Filter>Header Files\third_party\sqlite</Filter>
     </ClInclude>
     <ClInclude Include="..\include\sqlite3ext.h">
-      <Filter>Header Files\sqlite</Filter>
+      <Filter>Header Files\third_party\sqlite</Filter>
     </ClInclude>
     <ClInclude Include="..\include\CppConsoleTable.hpp">
-      <Filter>Header Files\consoletable</Filter>
+      <Filter>Header Files\third_party\consoletable</Filter>
     </ClInclude>
     <ClInclude Include="..\include\rang.hpp">
-      <Filter>Header Files\rang</Filter>
+      <Filter>Header Files\third_party\rang</Filter>
     </ClInclude>
     <ClInclude Include="..\include\vending_machine.hpp">
-      <Filter>Header Files</Filter>
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\include\json.hpp">
+      <Filter>Header Files\third_party\json</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -4,6 +4,7 @@
 #include <set>
 #include <atomic>
 #include <map>
+#include <initializer_list>
 
 namespace vm {
 	template <typename T>
@@ -81,7 +82,7 @@ namespace vm {
 			return digital_value;
 		}
 
-		Coin physical_value() const {
+		ValueType physical_value() const {
 			ValueType integral_part = 0;
 			const auto point_value = std::modf(digital_value, &integral_part);
 			if (point_value > 0.0) {
@@ -95,6 +96,10 @@ namespace vm {
 			return integral_part;
 		}
 	};
+
+	bool operator<(Coin<'INR'> const& lhs, Coin<'INR'> const& rhs) {
+		return lhs.digital_value < rhs.digital_value;
+	}
 
 	/// @class This class represents currency
 	/// @brief Currency class is created cause it will help out in adding and removing currency
@@ -116,6 +121,8 @@ namespace vm {
 
 	public:
 		CoinManager() = default;
+
+		CoinManager(std::initializer_list<CoinType> coins): _valid_denominations(coins){}
 
 		/// #fn isValidDenomination
 		/// @brief Checks if the denomination is a valid one
@@ -145,8 +152,24 @@ namespace vm {
 			return _coin_buckets[coin] += count;
 		}
 
+		CoinValueType addCoins(CoinChangeType const& coins) {
+			CoinType coin_value;
+			for (const auto coin : coins) {
+				coin_value += addCoins(coin.first, coin.second);
+			}
+			return coin_value.physical_value();
+		}
+
 		auto removeCoins(CoinType const& coin, const std::uint32_t count) -> typename CoinBucketType::mapped_type::value_type {
 			return _coin_buckets[coin] -= count;
+		}
+
+		CoinValueType removeCoins(CoinChangeType const& coins) {
+			CoinType coin_value;
+			for (const auto coin : coins) {
+				coin_value += removeCoins(coin.first, coin.second);
+			}
+			return coin_value.physical_value();
 		}
 
 		auto coinCount(CoinType const& coin) -> typename CoinBucketType::mapped_type::value_type {
@@ -193,9 +216,98 @@ namespace vm {
 		}
 	};
 
-	template<typename CoinType, typename CoinManagerType>
+	template<typename CoinT, typename CoinManagerT>
 	class VendingMachineManager {
-	private:
+	public:
+		using CoinType = CoinT;
+		using CoinManagerType = CoinManagerT<CoinType>;
+		using CoinValueType = typename CoinType::ValueType;
+		using CoinBucketType = typename CoinManagerType::CoinBucketType;
 
+		struct SKU {
+			std::string description;
+			CoinValueType value;
+			std::uint32_t count;
+
+			SKU(const CoinValueType coin_value,
+				const std::uint32_t count,
+				std::string const& description) {}
+		};
+
+	private:
+		std::map<std::string, SKU> _skus;
+		CoinManagerType _coin_manager;
+
+	public:
+		VendingMachineManager() = default;
+
+		bool addSKU(
+			std::string const& sku_name,
+			const CoinValueType value,
+			const std::uint32_t count,
+			std::string const& description = "NA") {
+			bool insert_success = false;
+			if (!_skus.count(sku_name)) {
+				_skus.emplace({ sku_name, {value, count, description} });
+				insert_success = true;
+			}
+			return insert_success;
+		}
+
+		bool updateSKUCount(
+			std::string const& sku_name,
+			const std::uint32_t count) {
+			bool update_success = false;
+			auto it = _skus.find(sku_name);
+			if(it != _skus.end()){
+				it->second.count = count;
+				update_success = true;
+			}
+			return update_success;
+		}
+
+		bool updateSKUValue(std::string const& sku_name, const CoinValueType value) {
+			bool update_success = false;
+			auto it = _skus.find(sku_name);
+			if (it != _skus.end()) {
+				it->second.value = value;
+				update_success = true;
+			}
+			return update_success;
+		}
+
+		bool updateSKUDescription(std::string const& sku_name, std::string const& description) {
+			bool update_success = false;
+			auto it = _skus.find(sku_name);
+			if (it != _skus.end()) {
+				it->second.description = description;
+				update_success = true;
+			}
+			return update_success;
+		}
+
+		auto canPurchase(std::string const& sku_name,
+			const CoinValueType input_value) -> std::pair<CoinValueType, bool> {
+			std::pair<CoinValueType, bool> purchase_success = { 0, false };
+			auto it = _skus.find(sku_name);
+			if (it !_skus.end()) {
+				const auto price = it->second.value;
+				if (price <= input_value) {
+					purchase_success.second = true;
+				}
+				else {
+					purchase_success.first = price - input_value;
+					purchase_success.second = false;
+				}
+			}
+
+			return purchase_success;
+		}
+
+		auto purchase(
+			std::string const& sku_name,
+			const CoinValueType value) -> std::pair<CoinValueType, bool> {
+
+		}
 	};
 }

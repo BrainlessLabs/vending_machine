@@ -162,6 +162,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\include\CppConsoleTable.hpp" />
+    <ClInclude Include="..\include\json.hpp" />
     <ClInclude Include="..\include\rang.hpp" />
     <ClInclude Include="..\include\sqlite3.h" />
     <ClInclude Include="..\include\sqlite3ext.h" />
