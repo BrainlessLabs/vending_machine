@@ -161,6 +161,7 @@
     <ClCompile Include="..\src\vend.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\include\application.hpp" />
     <ClInclude Include="..\include\coin.hpp" />
     <ClInclude Include="..\include\coin_manager.hpp" />
     <ClInclude Include="..\include\CppConsoleTable.hpp" />

@@ -14,7 +14,7 @@ namespace vm {
 
 		ValueType digital_value;
 
-		Coin() : value(0) {}
+		Coin() : digital_value(0) {}
 		Coin(const ValueType value) : digital_value(value) {}
 		Coin(Coin const& coin) {
 			digital_value = coin.digital_value;
@@ -56,6 +56,11 @@ namespace vm {
 
 		Coin operator+(Coin const& coin) const {
 			return Coin(digital_value + coin.digital_value);
+		}
+
+		Coin& operator+=(Coin const& coin) {
+			digital_value += coin.digital_value;
+			return *this;
 		}
 
 		explicit operator ValueType() const {

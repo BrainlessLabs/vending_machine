@@ -29,7 +29,12 @@ namespace vm {
 	public:
 		CoinManager() = default;
 
-		CoinManager(std::initializer_list<CoinType> coins) : _valid_denominations(coins) {}
+		CoinManager(std::initializer_list<CoinType> coins) : _valid_denominations(coins) {
+		}
+
+		const std::set<CoinType>& valid_denominations() const {
+			return _valid_denominations;
+		}
 
 		/// #fn isValidDenomination
 		/// @brief Checks if the denomination is a valid one
@@ -56,15 +61,17 @@ namespace vm {
 		}
 
 		auto addCoins(CoinType const& coin, const std::uint32_t count) -> typename CoinBucketType::mapped_type::value_type {
-			return _coin_buckets[coin] += count;
+			_coin_buckets[coin] += count;
+			return _coin_buckets[coin].load();
 		}
 
 		CoinValueType addCoins(CoinChangeType const& coins) {
-			CoinType coin_value;
+			CoinValueType coin_value = 0;
 			for (const auto coin : coins) {
-				coin_value += addCoins(coin.first, coin.second);
+				//coin_value += addCoins(coin.first, coin.second);
+				coin_value += coin.first.digital_value * coin.second;
 			}
-			return coin_value.physical_value();
+			return coin_value;
 		}
 
 		auto removeCoins(CoinType const& coin, const std::uint32_t count) -> typename CoinBucketType::mapped_type::value_type {
@@ -89,24 +96,24 @@ namespace vm {
 			if (change > 0 && !_coin_buckets.empty()) {
 				CoinChangeType temp_coin_bucket;
 
-				for (const auto it : _coin_buckets) {
+				for (const auto& it : _coin_buckets) {
 					temp_coin_bucket[it.first] = it.second.load();
 				}
 
 				auto ChangeCount = change;
 				for (const auto cur_denomination : reverse_range<decltype(_valid_denominations)>(_valid_denominations)) {
 					if (ChangeCount > 0 && temp_coin_bucket[cur_denomination] > 0) {
-						while (cur_denomination.digital_value < ChangeCount) {
+						while (cur_denomination.digital_value <= ChangeCount) {
 							ChangeCount -= cur_denomination.digital_value;
 							--temp_coin_bucket[cur_denomination];
 							++ret[cur_denomination];
 						}
 					}
 				}
-			}
 
-			if (0 != ChangeCount) {
-				ret.clear();
+				if (0 != ChangeCount) {
+					ret.clear();
+				}
 			}
 
 			return std::move(ret);
@@ -114,9 +121,12 @@ namespace vm {
 
 		static CoinValueType calculateChange(const CoinValueType submitted_price, const CoinValueType item_price) {
 			CoinValueType integral_part(0);
-			CoinValueType actual_price = submitted_price;
-			if (std::modf(submitted_price, &integral_part) > 0.3) {
-				actual_price + 1;
+			CoinValueType actual_price = submitted_price - item_price;
+			if (std::modf(actual_price, &integral_part) > 0.3) {
+				actual_price = integral_part + 1;
+			}
+			else {
+				actual_price = integral_part;
 			}
 
 			return actual_price;

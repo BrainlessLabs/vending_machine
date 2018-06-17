@@ -120,5 +120,8 @@
     <ClInclude Include="..\include\coin_manager.hpp">
       <Filter>Header Files\include</Filter>
     </ClInclude>
+    <ClInclude Include="..\include\application.hpp">
+      <Filter>Header Files\include</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
