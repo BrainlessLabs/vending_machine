@@ -122,6 +122,22 @@ namespace vm {
 			return it != _skus.end() && it->second.count > 0;
 		}
 
+		std::string getSKUs() const {
+			json j;
+			std::vector<json> v;
+			for (const auto sku : _skus) {
+				json o;
+				o["item"] = sku.first;
+				o["price"] = sku.second.value;
+				o["quantity"] = sku.second.count;
+				o["number"] = sku.second.sku_number;
+				o["description"] = sku.second.description;
+				v.push_back(o);
+			}
+			j["items"] = v;
+			return j.dump();
+		}
+
 		/// @details {"status": "SUCCESS", "error_message": "", "change" : [{}]}
 		std::string purchase(
 			std::string const& sku_name,
