@@ -23,7 +23,7 @@ namespace vm {
 			std::uint32_t count;
 			std::uint32_t sku_number;
 			std::string description;
-
+			SKU() = default;
 			SKU(const CoinValueType coin_value,
 				const std::uint32_t count,
 				const std::uint32_t sku_number,
@@ -50,6 +50,10 @@ namespace vm {
 
 		bool updateCoins(CoinType const& coin, const std::uint32_t count) {
 			return true;
+		}
+
+		std::set<CoinType> const& valid_denominations() const {
+			return _coin_manager.valid_denominations();
 		}
 
 		bool addSKU(
@@ -120,6 +124,21 @@ namespace vm {
 		bool hasSKU(std::string const& sku_name) const {
 			const auto it = _skus.find(sku_name);
 			return it != _skus.end() && it->second.count > 0;
+		}
+
+		std::string getSKUNameFromNumber(const std::uint32_t sku_number) const {
+			std::string sku_name;
+			for (const auto sku : _skus) {
+				if (sku_number == sku.second.sku_number) {
+					sku_name = sku.first;
+					break;
+				}
+			}
+			return sku_name;
+		}
+
+		CoinValueType getSKUPrice(std::string const& sku_name) {
+			return _skus[sku_name].value;
 		}
 
 		std::string getSKUs() const {

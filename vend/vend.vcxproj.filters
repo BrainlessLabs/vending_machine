@@ -19,9 +19,6 @@
     <Filter Include="Header Files\third_party">
       <UniqueIdentifier>{98d47e95-f515-412f-bf4a-167d69b2b69f}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\third_party\consoletable">
-      <UniqueIdentifier>{f2d95365-c1bc-4d0d-94bb-fb7e4ad72646}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\third_party\hdr">
       <UniqueIdentifier>{f0a02afc-4f2d-42f1-be10-22825116eb36}</UniqueIdentifier>
     </Filter>
@@ -98,9 +95,6 @@
     </ClInclude>
     <ClInclude Include="..\include\sqlite3ext.h">
       <Filter>Header Files\third_party\sqlite</Filter>
-    </ClInclude>
-    <ClInclude Include="..\include\CppConsoleTable.hpp">
-      <Filter>Header Files\third_party\consoletable</Filter>
     </ClInclude>
     <ClInclude Include="..\include\rang.hpp">
       <Filter>Header Files\third_party\rang</Filter>

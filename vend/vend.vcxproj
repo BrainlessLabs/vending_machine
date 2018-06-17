@@ -164,7 +164,6 @@
     <ClInclude Include="..\include\application.hpp" />
     <ClInclude Include="..\include\coin.hpp" />
     <ClInclude Include="..\include\coin_manager.hpp" />
-    <ClInclude Include="..\include\CppConsoleTable.hpp" />
     <ClInclude Include="..\include\json.hpp" />
     <ClInclude Include="..\include\rang.hpp" />
     <ClInclude Include="..\include\reverse_iterator.hpp" />
